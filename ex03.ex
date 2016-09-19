@@ -55,7 +55,15 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def even_or_odd(number) do
+    cond do
+      Integer.is_even number -> :Even
+      Integer.is_odd  number -> :Odd
+    end
+  end    
+
+  def odd_even([]) do:  []
+  def odd_even([h|t]) do: [even_or_odd(h)|even_or_odd(t)]
 
 
   ##############################################################################
@@ -65,6 +73,9 @@ defmodule Ex03 do
   @doc """
   Write a function that returns true if a list contains a
   given value, false otherwise.
+
+    
+  
 
       iex> Ex03.list_contains([ 1, 2, 3, 4], 3)
       true
@@ -77,7 +88,9 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains(list,number) do
+    number in list
+  end
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +114,15 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  defmodule Sample do
+  def list_equal([],[]),  do: true
+  def list_equal([],_temp),  do: false
+  def list_equal(_temp,[]),  do: false
+  def list_equal([h1|t1],[h2|t2]) do
+  h1==h2 and list_equal(t1,t2)
+  end
+end
+#temp variable is used for lists with different sizes.
 
 
 
@@ -149,7 +170,29 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  #3 Cases for Victory. Vertical, Horizontal, Diagnol
+
+  def won(player) do
+  case player do
+                              #Vertical Case    
+    { player, _, _, player, _, _, player, _, _} -> player
+    { _, player, _, _, player, _, _, player, _} -> player
+    { _, _, player, _, _, player, _, _, player} -> player
+
+                              #Horizontal Case
+    { player, player, player, _, _, _, _, _, _} -> player
+    { _, _, _, player, player, player, _, _, _} -> player
+    { _, _, _, _, _, _, player, player, player} -> player
+
+                              #Diagnol Case
+    { player, _, _, _, player, _, _, _, player} -> player
+    { _, _, player, _, player, _, player, _, _} -> player
+                              
+                              #Other Cases
+
+    _ -> false
+  end
+end
 
 
   ###########################

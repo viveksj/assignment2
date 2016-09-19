@@ -1,3 +1,5 @@
+#Ex00.ex
+#Vivek Sanghvi Jain
 ExUnit.start
 Code.load_file "support.ex"
 
@@ -36,10 +38,11 @@ defmodule Ex00 do
   # Write a function that increments its numeric parameter #
   ##########################################################
 
-  inc = your_anonymous_function(1)
+  inc = fn(a) -> a+1 end
 
   assert inc.(2)  == 3
   assert inc.(-1) == 0
 end
 
 
+#Ask the meaning of Unused import support to professor. I.E. Why have it if we aren't using it.
