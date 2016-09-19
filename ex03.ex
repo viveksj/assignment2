@@ -1,3 +1,4 @@
+#ex03.ex
 Code.compiler_options(ignore_module_conflict: true)
 
 defmodule Ex03 do
@@ -57,13 +58,12 @@ defmodule Ex03 do
 
   def even_or_odd(number) do
     cond do
-      Integer.is_even number -> :Even
-      Integer.is_odd  number -> :Odd
+      Integer.is_even number -> :even
+      Integer.is_odd  number -> :odd
     end
-  end    
-
-  def odd_even([]) do:  []
-  def odd_even([h|t]) do: [even_or_odd(h)|even_or_odd(t)]
+  end
+  def odd_even([]), do: []
+  def odd_even([h|t]), do: [even_or_odd(h)|odd_even(t)]
 
 
   ##############################################################################
